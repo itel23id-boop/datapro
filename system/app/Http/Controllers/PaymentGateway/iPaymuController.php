@@ -117,10 +117,11 @@ class iPaymuController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        $err = curl_error($ch);
         $ret = curl_exec($ch);
+        $err = curl_error($ch);
         curl_close($ch);
         if ($err) {
+            Log::error('iPaymu API error: ' . $err);
             return $err;
         } else {
             return json_decode($ret);

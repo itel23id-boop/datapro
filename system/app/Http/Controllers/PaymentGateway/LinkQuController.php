@@ -3,6 +3,7 @@ namespace App\Http\Controllers\PaymentGateway;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LinkQuController extends Controller
 {
@@ -200,10 +201,11 @@ class LinkQuController extends Controller
               CURLOPT_HTTPHEADER => $headers,
             ));
         }
-        $err = curl_error($curl);
         $ret = curl_exec($curl);
+        $err = curl_error($curl);
         curl_close($curl);
         if ($err) {
+            Log::error('LinkQu API error: ' . $err);
             return $err;
         } else {
             return json_decode($ret);

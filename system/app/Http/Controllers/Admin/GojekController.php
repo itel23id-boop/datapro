@@ -9,14 +9,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Gojek;
-use App\Models\History_Gojek;
+use App\Models\HistoryGojek;
 use App\Models\Berita;
 class GojekController extends Controller
 {
     public function create()
     {
         return view('components.admin.gopay-settings', [
-            'transaksi' => History_Gojek::all()
+            'transaksi' => HistoryGojek::all()
             ]);
     }
 
@@ -64,11 +64,11 @@ class GojekController extends Controller
         $getData = json_decode($app->getTransactionHistory(), true);
         $list_transaksi = $getData['data']['success'];
 
-        $menghapusTransaksiLama = History_Gojek::truncate();
+        $menghapusTransaksiLama = HistoryGojek::truncate();
 
         foreach ($list_transaksi as $transfer) {
             if ($transfer['type'] == "credit") {
-                History_Gojek::insert([
+                HistoryGojek::insert([
                     'tanggal' => $transfer['transacted_at'],
                     'keterangan' => $transfer['description'],
                     'type' => $transfer['type'],

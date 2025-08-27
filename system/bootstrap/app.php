@@ -2,6 +2,8 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,6 +24,17 @@ return Application::configure(basePath: dirname(__DIR__))
         $schedule->command('update:pembelian')->everyMinute();
         $schedule->command('update:pembayaran')->everyMinute();
         $schedule->command('update:pesanan')->everyMinute();
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->render(function (HttpException $e) {
+            $statusCode = $e->getStatusCode();
+
+            if ($statusCode === 404) {
+                return response()->view('errors.404', [], 404);
+            } elseif ($statusCode === 500) {
+                return response()->view('errors.500', [], 500);
+            }
+        });
     })
     ->create();
 

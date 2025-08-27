@@ -53,26 +53,26 @@ class PaydisiniController extends Controller
             'type_fee' => '1',
             'payment_guide' => TRUE, // Pilih TRUE jika ingin menampilkan panduan pembayaran
             'callback_count' => ENV("APP_URL")."/callback_paydisini",
-            'signature' => 'ba8427311e3d002bfa52a48ad46c04d2',
+            'signature' => $sign,
             'return_url' => $returnURL
         );
 
         $response = $this->connect($body);
         if($response->success == true) {
-            if(empty($data->data->virtual_account)){
-                if(empty($data->data->checkout_url)){
-                    if(empty($data->data->payment_code)){
-                        $paymentNumber = $data->data->qr_content;
+            if(empty($response->data->virtual_account)){
+                if(empty($response->data->checkout_url)){
+                    if(empty($response->data->payment_code)){
+                        $paymentNumber = $response->data->qr_content;
                     } else {
-                        $paymentNumber = $data->data->payment_code;
+                        $paymentNumber = $response->data->payment_code;
                     }
                 }else{
-                    $paymentNumber = $data->data->checkout_url;
+                    $paymentNumber = $response->data->checkout_url;
                 }
             }else{
-                $paymentNumber = $data->data->virtual_account;
+                $paymentNumber = $response->data->virtual_account;
             }
-            return array('success' => true, 'amount' => $response->data->amount, 'no_pembayaran' => $paymentNumber, 'reference' => $response->data->pay_id, 'checkout_url' => $data->data->checkout_url);
+            return array('success' => true, 'amount' => $response->data->amount, 'no_pembayaran' => $paymentNumber, 'reference' => $response->data->pay_id, 'checkout_url' => $response->data->checkout_url);
         } else {
             return array('success' => false,'msg' => $response->msg);
         }

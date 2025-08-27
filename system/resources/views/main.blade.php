@@ -48,9 +48,10 @@
 	<link rel="stylesheet" href="/assets/css/style-{{$config->change_theme}}.css?v=<?= time() ?>">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.7.95/css/materialdesignicons.min.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/pixel.css?v=<?= time() ?>">
+        <link rel="stylesheet" type="text/css" href="/assets/css/pixel.css?v=<?= time() ?>">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('css')
-	<style>
+        <style>
 	    :root {
 	        --warna_1: <?= $config->warna1; ?>;
             --warna_2: <?= $config->warna2; ?>;

@@ -10,7 +10,8 @@ class Artikel extends Model
     use HasFactory;
     protected $guarded = [];
     
-    public function tags(){
-        return $this->belongsTo(ArtikelTag::class,'artikel_id');
+    public function tags()
+    {
+        return $this->hasMany(ArtikelTag::class, 'artikel_id');
     }
 }

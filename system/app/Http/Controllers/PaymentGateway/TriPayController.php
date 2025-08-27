@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Pembayaran;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class TriPayController extends Controller
 {
@@ -50,6 +51,13 @@ class TriPayController extends Controller
 
         $response = json_decode(curl_exec($curl));
         $error = curl_error($curl);
+        curl_close($curl);
+
+        if ($error) {
+            Log::error('TriPay request cURL error: ' . $error);
+            return ['success' => false, 'msg' => 'Payment gateway request failed: ' . $error];
+        }
+
         if($response->success == true){
             if(empty($response->data->pay_code)){
                 if(empty($response->data->pay_url)){
@@ -105,6 +113,11 @@ class TriPayController extends Controller
 
         curl_close($curl);
 
+        if ($error) {
+            Log::error('TriPay fee cURL error: ' . $error);
+            throw new \Exception('Unable to calculate fee via payment gateway: ' . $error);
+        }
+
         return $response->data['0']->total_fee->customer + $response->data['0']->total_fee->merchant;
     }
 
@@ -128,6 +141,11 @@ class TriPayController extends Controller
 
         curl_close($curl);
 
+        if ($error) {
+            Log::error('TriPay channel cURL error: ' . $error);
+            throw new \Exception('Unable to retrieve payment channels: ' . $error);
+        }
+
         return $response;
     }
 
@@ -150,6 +168,11 @@ class TriPayController extends Controller
         $error = curl_error($curl);
 
         curl_close($curl);
+
+        if ($error) {
+            Log::error('TriPay detail cURL error: ' . $error);
+            throw new \Exception('Unable to retrieve transaction detail: ' . $error);
+        }
 
         return $response;
     }

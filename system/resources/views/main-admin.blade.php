@@ -92,8 +92,9 @@
 				f.parentNode.insertBefore(j, f);
 			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
 		</script>
-		<!-- End Google Tag Manager -->
-	</head>
+                <!-- End Google Tag Manager -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        </head>
 
     <body>
         <div class="pre-loader">

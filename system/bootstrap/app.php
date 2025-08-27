@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -76,5 +78,11 @@ return Application::configure(basePath: dirname(__DIR__))
             }
         });
     })
+    ->withEvents([
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ],
+    ])
+    ->withBroadcasting()
     ->create();
 

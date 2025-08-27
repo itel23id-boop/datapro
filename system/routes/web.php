@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\ApiController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\indexController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CariController;
@@ -95,10 +95,10 @@ Route::get('/getnotify', function(){
     Route::get('/user/upgrade/riwayat',  [DsController::class,'riwayat_upgrade'])->middleware('auth');
     Route::get('/user/edit/profile',[DsController::class,'editProfile'])->middleware('auth');
     Route::post('/cari/index',[IndexController::class,'cariIndex']);
-    Route::get('/',                                             [indexController::class, 'create'])->name('home');
-    Route::get('/getnotif',                                             [indexController::class, 'get_notif'])->name('getnotif');
-    Route::get('404', [indexController::class, 'notFound'])->name('404');
-    Route::get('500', [indexController::class, 'error'])->name('500');
+    Route::get('/',                                             [IndexController::class, 'create'])->name('home');
+    Route::get('/getnotif',                                             [IndexController::class, 'get_notif'])->name('getnotif');
+    Route::get('404', [IndexController::class, 'notFound'])->name('404');
+    Route::get('500', [IndexController::class, 'error'])->name('500');
     Route::get('/order/{kategori:kode}',                         [OrderController::class, 'create']);
     Route::get('/order/description/{id}',                                  [OrderController::class, 'description'])->name('ajax.description');
     Route::get('/order/harga/{id}/{qty}',                                  [OrderController::class, 'price'])->name('ajax.price');

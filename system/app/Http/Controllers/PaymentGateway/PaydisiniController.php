@@ -110,11 +110,11 @@ class PaydisiniController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        
-        $err = curl_error($ch);
         $ret = curl_exec($ch);
+        $err = curl_error($ch);
         curl_close($ch);
         if ($err) {
+            Log::error('Paydisini API error: ' . $err);
             return $err;
         } else {
             return json_decode($ret);

@@ -639,7 +639,7 @@ class ComposerStaticInit29c51286434fbcb4b140ec2eb666e208
         'App\\Models\\ArtikelTag' => __DIR__ . '/../..' . '/app/Models/ArtikelTag.php',
         'App\\Models\\Berita' => __DIR__ . '/../..' . '/app/Models/Berita.php',
         'App\\Models\\Gojek' => __DIR__ . '/../..' . '/app/Models/Gojek.php',
-        'App\\Models\\History_Gojek' => __DIR__ . '/../..' . '/app/Models/History_Gojek.php',
+        'App\\Models\\HistoryGojek' => __DIR__ . '/../..' . '/app/Models/HistoryGojek.php',
         'App\\Models\\History_Ovo' => __DIR__ . '/../..' . '/app/Models/History_Ovo.php',
         'App\\Models\\Kategori' => __DIR__ . '/../..' . '/app/Models/Kategori.php',
         'App\\Models\\KategoriInput' => __DIR__ . '/../..' . '/app/Models/KategoriInput.php',

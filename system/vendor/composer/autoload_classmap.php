@@ -104,7 +104,7 @@ return array(
     'App\\Models\\ArtikelTag' => $baseDir . '/app/Models/ArtikelTag.php',
     'App\\Models\\Berita' => $baseDir . '/app/Models/Berita.php',
     'App\\Models\\Gojek' => $baseDir . '/app/Models/Gojek.php',
-    'App\\Models\\History_Gojek' => $baseDir . '/app/Models/History_Gojek.php',
+    'App\\Models\\HistoryGojek' => $baseDir . '/app/Models/HistoryGojek.php',
     'App\\Models\\History_Ovo' => $baseDir . '/app/Models/History_Ovo.php',
     'App\\Models\\Kategori' => $baseDir . '/app/Models/Kategori.php',
     'App\\Models\\KategoriInput' => $baseDir . '/app/Models/KategoriInput.php',

@@ -1,0 +1,9 @@
+.flex {
+    display: flex;
+}
+.ms-1 {
+    margin-left: .25rem !important;
+}
+.cursor-pointer {
+    cursor: pointer;
+}

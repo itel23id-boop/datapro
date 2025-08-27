@@ -1,0 +1,22 @@
+<?php
+return [
+	'deskripsi_winrate' => 'Digunakan untuk menghitung total pertandingan yang harus ditempuh untuk mencapai target winrate yang diinginkan.',
+	"judul_winrate" => "Kalkulator Winrate Mobile Legends",
+	"masukkan_winrate" => "Masukkan Win Rate Anda",
+	"total_pertandinganwinrate" => "Total Pertandingan Anda",
+	"total_winrate" => "Total Win Rate Anda",
+	"total_winratediinginkan" => "Total Win Rate diinginkan",
+	"contoh" => "Contoh",
+	"hasil" => "Hasil",
+	"judul_magicwheel" => "Kalkulator Magic Wheel",
+	"deskripsi_magicwheel" => "Kalkulator Magic Wheel berfungsi untuk mengetahui total maksimal diamond yang kamu butuhkan untuk mendapatkan skin LEGEND.",
+	"masukkan_magicwheel" => "Masukkan Point Magic Wheel Anda",
+	"point_magiwheelanda" => "Point Magic Wheel Anda",
+	"maximal_magicwheel" => "Membutuhkan Maksimal",
+	"judul_zodiac" => "Kalkulator Zodiac",
+	"deskripsi_zodiac" => "Kalkulator Zodiac ini berfungsi untuk mengetahui total maksimal diamond yang kamu butuhkan untuk mendapatkan skin Zodiac.",
+	"masukkan_zodiac" => "Masukkan Point Zodiac Anda",
+	"star_pointzodiac" => "Star Point Anda",
+	"maximal_zodiac" => "Membutuhkan Maksimal",
+	"submit_calculator" => "Klik Untuk Membeli Diamond",
+];
